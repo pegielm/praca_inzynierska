@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  ctf:
+    build: .
+    container_name: challenges
+    ports:
+      - "9001:9001"  # buffer_overflow_2
+      - "9002:9002"  # rop
+      - "9003:9003"  # rop_2
+      - "9004:9004"  # ret2libc
+      - "9005:9005"  # format_string
+      - "9006:9006"  # shellcode
+      - "9007:9007"  # stack_shellcode
+      - "2222:22"    # SSH access
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
