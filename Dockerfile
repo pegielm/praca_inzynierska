@@ -43,7 +43,7 @@ RUN cp /tmp/code/*.c /tmp/ && \
 RUN gcc -o /challs/buffer_overflow_2 -std=c17 -fno-stack-protector -no-pie /tmp/buffer_overflow_2.c && \
     gcc -o /challs/rop -std=c17 -fno-stack-protector -no-pie /tmp/rop.c && \
     gcc -o /challs/rop_2 -std=c17 -fno-stack-protector -no-pie /tmp/rop_2.c && \
-    gcc -o /challs/ret2libc -std=c17 -fno-stack-protector -no-pie /tmp/ret2libc.c && \
+    gcc -o /challs/ret2libc -std=c17 -fno-stack-protector /tmp/ret2libc.c && \
     gcc -o /challs/format_string -Wl,-z,relro  /tmp/format_string.c && \
     gcc -o /challs/shellcode -fno-stack-protector /tmp/shellcode.c && \
     gcc -o /challs/stack_shellcode -fno-stack-protector -z execstack /tmp/stack_shellcode.c && \
