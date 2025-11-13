@@ -1,6 +1,6 @@
 /*
 rop.c
-compile with: gcc -o ret2libc -std=c17 -fno-stack-protector -no-pie ret2libc.c
+compile with: gcc -o ret2libc -std=c17 -fno-stack-protector ret2libc.c
 */
 #include <stdio.h>
 #include <stdlib.h>
