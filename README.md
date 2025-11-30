@@ -6,6 +6,14 @@ docker compose build
 docker compose up -d
 ```
 
+## getting challange binaries
+
+```
+docker build -f Dockerfile.build -t ctf-builder .
+
+docker run --rm -v "$(pwd)/local:/out" ctf-builder
+```
+
 ## challenge Ports
 
 | Challenge         | Port | Command                  |

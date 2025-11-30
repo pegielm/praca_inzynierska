@@ -1,0 +1,25 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    gcc \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build
+
+COPY code/*.c /build/
+
+RUN mkdir -p /output && \
+    gcc -o /output/buffer_overflow_2 -std=c17 -fno-stack-protector -no-pie buffer_overflow_2.c && \
+    gcc -o /output/rop -std=c17 -fno-stack-protector -no-pie rop.c && \
+    gcc -o /output/rop_2 -std=c17 -fno-stack-protector -no-pie rop_2.c && \
+    gcc -o /output/ret2libc -std=c17 -fno-stack-protector ret2libc.c && \
+    gcc -o /output/format_string -Wl,-z,relro format_string.c && \
+    gcc -o /output/shellcode -fno-stack-protector shellcode.c && \
+    gcc -o /output/stack_shellcode -fno-stack-protector -z execstack stack_shellcode.c && \
+    cp /lib/x86_64-linux-gnu/libc.so.6 /output/ && \
+    cp /lib64/ld-linux-x86-64.so.2 /output/
+
+CMD cp -r /output/* /out/
